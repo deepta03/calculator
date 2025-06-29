@@ -25,6 +25,7 @@ let num1;
 let num2;
 let sum;
 let operator;
+let floatNumber;
 
 let operate = function (num1,num2, operator){
 
@@ -47,7 +48,6 @@ for(let i=0; i<numbers.length; i++){
     numbers[i].addEventListener("click", () =>{
 
         if(display.textContent==="0") display.textContent="";
-       
 
     
         display.textContent+=numbers[i].textContent;
@@ -101,4 +101,12 @@ equals.addEventListener("click", () => {
 })
 
 
+let dot=document.querySelector(".dot");
+
+dot.addEventListener("click", ()=>{
+
+    if(display.textContent==="0" || display.textContent==="") display.textContent="0.";
+    if(!display.textContent.includes(".")) display.textContent+=".";
+    
+   })
 
