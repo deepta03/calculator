@@ -48,7 +48,7 @@ for(let i=0; i<numbers.length; i++){
     numbers[i].addEventListener("click", () =>{
 
         if(display.textContent==="0") display.textContent="";
-        if(display.textContent==sum) {
+        if(display.textContent==sum && sum!==0) {
             
             display.textContent="";
             num2=undefined; 
@@ -84,7 +84,7 @@ for(let i=0; i<operators.length; i++){
         display.textContent="";
         num2=display.textContent;
 
-        if(sum) num1=sum;
+        if(sum!==undefined) num1=sum;
     
         operator=operators[i].textContent;
 
@@ -99,10 +99,9 @@ let equals=document.querySelector(".equals");
 equals.addEventListener("click", () => {
 
     
-    
     sum=operate(num1, num2, operator);
 
-    if(sum) display.textContent= sum;
+    if(sum!==undefined) display.textContent= sum;
     
     
     
@@ -120,3 +119,30 @@ dot.addEventListener("click", ()=>{
     
    })
 
+
+// inputting negative numbers
+
+let minus =document.querySelector(".subtract");
+minus.addEventListener("click", ()=>{
+
+
+    if(display.textContent==="" || display.textContent==="-"){
+
+        display.textContent="-";
+
+
+    }
+
+    else{
+
+        display.textContent="";
+        num2=display.textContent;
+
+        if(sum!==undefined) num1=sum;
+    
+        operator="-";
+
+
+    }
+
+}) 
