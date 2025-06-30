@@ -48,6 +48,13 @@ for(let i=0; i<numbers.length; i++){
     numbers[i].addEventListener("click", () =>{
 
         if(display.textContent==="0") display.textContent="";
+        if(display.textContent==sum) {
+            
+            display.textContent="";
+            num2=undefined; 
+            sum=undefined; 
+
+        }
 
     
         display.textContent+=numbers[i].textContent;
@@ -71,6 +78,9 @@ for(let i=0; i<operators.length; i++){
 
     operators[i].addEventListener("click", () =>{
 
+      
+
+        
         display.textContent="";
         num2=display.textContent;
 
