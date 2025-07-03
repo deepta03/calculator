@@ -87,14 +87,27 @@ for(let i=0; i<operators.length; i++){
 
       
 
-        
+        if(num2!=undefined && num2!==""){
+
+                    
+             num1=operate(num1, num2, operator);
+             display.textContent=num1; 
+
+                       
+        }
+
+            
+
         display.textContent="";
         num2=display.textContent;
 
+           
+        
         if(sum!==undefined) num1=sum;
     
         operator=operators[i].textContent;
 
+        
         
 
     })
@@ -149,6 +162,14 @@ minus.addEventListener("click", ()=>{
     }
 
     else{
+
+         if(num2!=undefined && num2!==""){
+
+                    
+             num1=operate(num1, num2, operator);
+
+
+         }
 
         display.textContent="";
         num2=display.textContent;
