@@ -25,6 +25,7 @@ let num1;
 let num2;
 let sum;
 let operator;
+let sum2;
 
 let operate = function (num1,num2, operator){
 
@@ -38,8 +39,6 @@ let operate = function (num1,num2, operator){
 let display= document.querySelector("p");
 
 
-
-
 let numbers=document.querySelectorAll(".number")
 
 for(let i=0; i<numbers.length; i++){
@@ -48,19 +47,25 @@ for(let i=0; i<numbers.length; i++){
 
         if(display.textContent==="0") {
             
-            display.textContent="";
-            num2=undefined; 
-            sum=undefined; 
-
+            display.textContent="";           
             
         }
-    
+
+        if(display.textContent==sum2){
+
+            display.textContent="";
+            sum2=undefined;          
+            
+
+        }
+           
+        if(display.textContent==sum) {
         
-        if(display.textContent==sum && sum!=0) {
             
             display.textContent="";
-            num2=undefined; 
+            num2=undefined;
             sum=undefined; 
+            
 
         }
 
@@ -68,14 +73,10 @@ for(let i=0; i<numbers.length; i++){
         
         if(num2===undefined) num1=parseFloat(display.textContent);
         else num2=parseFloat(display.textContent);
-
-    
-       
+      
         
     })
 }
-
-
 
 
 
@@ -85,30 +86,33 @@ for(let i=0; i<operators.length; i++){
 
     operators[i].addEventListener("click", () =>{
 
-      
+        if(display.textContent==="-") display.textContent="";
+        if(sum!=undefined && display.textContent==sum) sum=undefined;
 
-        if(num2!=undefined && num2!==""){
+        if(num1!=undefined)
 
-                    
-             num1=operate(num1, num2, operator);
-             display.textContent=num1; 
+    {
 
-                       
-        }
-
-            
-
-        display.textContent="";
-        num2=display.textContent;
-
-           
-        
-        if(sum!==undefined) num1=sum;
     
-        operator=operators[i].textContent;
+      if(display.textContent!=sum2) display.textContent="";   
+      
+       
+      if(num2!=undefined && num2!==""){
+            
+             sum2=operate(num1, num2, operator);
+             display.textContent=sum2;
+             num1=sum2; 
+             
+                            
+        }               
+
+    
+      num2=""; 
+
+      operator=operators[i].textContent;
 
         
-        
+    }
 
     })
 }
@@ -118,14 +122,46 @@ let equals=document.querySelector(".equals");
 
 equals.addEventListener("click", () => {
 
+    //  if(sum==undefined) {
+    //  display.textContent=num1;
+    //  num1= parseFloat(display.textContent);}
     
-    sum=operate(num1, num2, operator);
 
-    if(sum!==undefined) display.textContent= sum;
+    //  if(num2!==""){
+
+    //  if(num1!=undefined && num2==undefined && sum==undefined && sum2==undefined && operator==undefined){
+
+    //     sum=num1;
+        
+    // }
+
+     if(num1!=undefined && num2==undefined && sum==undefined && sum2==undefined){
+
+        sum=num1;
+     } 
     
+        
+     if( num1!=undefined && num1!=="" && num2!=undefined && num2!=="" && operator !=undefined)
     
+        {  sum=operate(num1, num2, operator); }
+
+     
+     if(sum!=undefined) {
+        display.textContent= sum;}
+       
+     if(num2===""){
+
+        num2=undefined;
+        sum2=undefined;
+        operator=undefined;
+        num1=undefined;
+        sum=undefined; 
+        display.textContent="ERROR";       
+        
+    // }
+        
     
-    
+}
    
 })
 
@@ -134,11 +170,19 @@ let dot=document.querySelector(".dot");
 
 dot.addEventListener("click", ()=>{
 
+    if(display.textContent==sum2){
+
+            display.textContent="";
+            sum2=undefined;          
+            
+
+        }
+
     
-    if(display.textContent==sum && sum!=0) {
+    if(display.textContent==sum) {
             
             display.textContent="";
-             num2=undefined; 
+            num2=undefined; 
             sum=undefined; 
 
         }
@@ -154,7 +198,7 @@ let minus =document.querySelector(".subtract");
 minus.addEventListener("click", ()=>{
 
 
-    if(display.textContent==="" || display.textContent==="-"){
+    if(operator==undefined && display.textContent===""){
 
         display.textContent="-";
 
@@ -163,22 +207,29 @@ minus.addEventListener("click", ()=>{
 
     else{
 
+        if(sum!=undefined && display.textContent==sum) sum=undefined;
+
+        if(num1!=undefined){
+
+
+         if(display.textContent!=sum2) display.textContent="";
+
          if(num2!=undefined && num2!==""){
 
                     
-             num1=operate(num1, num2, operator);
-
+            sum2=operate(num1, num2, operator);
+            display.textContent=sum2;
+            num1=sum2; 
 
          }
 
-        display.textContent="";
-        num2=display.textContent;
+        
+        num2="";
 
-        if(sum!==undefined) num1=sum;
-    
         operator="-";
-
-
+    
     }
+
+}
 
 }) 
