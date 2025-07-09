@@ -233,3 +233,18 @@ minus.addEventListener("click", ()=>{
 }
 
 }) 
+
+let clear = document.querySelector(".clear");
+
+clear.addEventListener("click", () => {
+
+        
+        display.textContent="";
+        num1=undefined;
+        num2=undefined;
+        sum=undefined;
+        operator=undefined;
+        sum2=undefined;
+
+
+})
