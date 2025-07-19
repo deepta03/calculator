@@ -65,6 +65,7 @@ for(let i=0; i<numbers.length; i++){
             display.textContent="";
             num2=undefined;
             sum=undefined; 
+            operator=undefined; 
             
 
         }
@@ -184,10 +185,13 @@ dot.addEventListener("click", ()=>{
             display.textContent="";
             num2=undefined; 
             sum=undefined; 
+            operator=undefined;
 
         }
     if(display.textContent==="0" || display.textContent==="") display.textContent="0.";
     if(!display.textContent.includes(".")) display.textContent+=".";
+
+
     
    })
 
@@ -248,3 +252,41 @@ clear.addEventListener("click", () => {
 
 
 })
+
+
+let del = document.querySelector(".delete");
+
+
+del.addEventListener("click", () => {
+
+    if(display.textContent==="-") display.textContent="";
+
+    if(display.textContent==="0.") display.textContent="";
+
+
+    if(display.textContent!=sum && display.textContent!=sum2 && display.textContent!=="") {      
+
+        
+        if(num1!=undefined && num1==display.textContent && sum==undefined && sum2==undefined && num2==undefined && operator==undefined){
+            display.textContent=display.textContent.slice(0,-1);
+            if(display.textContent!=="" && display.textContent!=="-" && display.textContent!=="0.") num1=parseFloat(display.textContent);
+            else num1=undefined;
+
+        }
+
+        if(num2!=undefined && num2==display.textContent && num1!=undefined){
+            display.textContent=display.textContent.slice(0,-1);
+            if(display.textContent!=="" && display.textContent!=="0.") num2=parseFloat(display.textContent);
+            else num2=""; 
+
+
+        }
+    }
+
+
+})
+
+
+
+
+
