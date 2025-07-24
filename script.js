@@ -5,7 +5,7 @@ let add = function (num1, num2){
 
 let subtract = function(num1, num2) {
 
-  return num1-num2;
+    return num1-num2;
 	
 };
 
@@ -35,6 +35,39 @@ let operate = function (num1,num2, operator){
    if (operator ==="÷") return divide(num1, num2);
 }
 
+let checkForSums = function () {
+
+    if(display.textContent==sum) {
+
+            display.textContent="";
+            num2=undefined;
+            sum=undefined; 
+            operator=undefined;          
+        }
+
+    if(display.textContent==sum2) {
+         
+            display.textContent="";
+            sum2=undefined;               
+
+        }
+}
+
+let calculate = function() {
+
+    
+    if(display.textContent!=sum2) display.textContent="";
+
+    if(num2!=undefined && num2!==""){
+               
+            sum2=operate(num1, num2, operator);
+            display.textContent=sum2;
+            num1=sum2; 
+        }
+        
+    num2="";
+}
+
 
 let display= document.querySelector("p");
 
@@ -45,29 +78,11 @@ for(let i=0; i<numbers.length; i++){
 
     numbers[i].addEventListener("click", () =>{
 
+        checkForSums();     
+        
         if(display.textContent==="0") {
             
-            display.textContent="";           
-            
-        }
-
-        if(display.textContent==sum2){
-
-            display.textContent="";
-            sum2=undefined;          
-            
-
-        }
-           
-        if(display.textContent==sum) {
-        
-            
-            display.textContent="";
-            num2=undefined;
-            sum=undefined; 
-            operator=undefined; 
-            
-
+            display.textContent="";                   
         }
 
         display.textContent+=numbers[i].textContent;
@@ -90,28 +105,10 @@ for(let i=0; i<operators.length; i++){
         if(display.textContent==="-") display.textContent="";
         if(sum!=undefined && display.textContent==sum) sum=undefined;
 
-        if(num1!=undefined)
+        if(num1!=undefined) {
 
-    {
-
-    
-      if(display.textContent!=sum2) display.textContent="";   
-      
-       
-      if(num2!=undefined && num2!==""){
-            
-             sum2=operate(num1, num2, operator);
-             display.textContent=sum2;
-             num1=sum2; 
-             
-                            
-        }               
-
-    
-      num2=""; 
-
-      operator=operators[i].textContent;
-
+            calculate(); 
+            operator=operators[i].textContent;
         
     }
 
@@ -123,30 +120,16 @@ let equals=document.querySelector(".equals");
 
 equals.addEventListener("click", () => {
 
-    //  if(sum==undefined) {
-    //  display.textContent=num1;
-    //  num1= parseFloat(display.textContent);}
-    
-
-    //  if(num2!==""){
-
-    //  if(num1!=undefined && num2==undefined && sum==undefined && sum2==undefined && operator==undefined){
-
-    //     sum=num1;
-        
-    // }
-
+   
      if(num1!=undefined && num2==undefined && sum==undefined && sum2==undefined){
 
         sum=num1;
      } 
-    
-        
+            
      if( num1!=undefined && num1!=="" && num2!=undefined && num2!=="" && operator !=undefined)
     
         {  sum=operate(num1, num2, operator); }
-
-     
+    
      if(sum!=undefined) {
         display.textContent= sum;}
        
@@ -158,10 +141,7 @@ equals.addEventListener("click", () => {
         num1=undefined;
         sum=undefined; 
         display.textContent="ERROR";       
-        
-    // }
-        
-    
+            
 }
    
 })
@@ -171,26 +151,10 @@ let dot=document.querySelector(".dot");
 
 dot.addEventListener("click", ()=>{
 
-    if(display.textContent==sum2){
+    checkForSums();
 
-            display.textContent="";
-            sum2=undefined;          
-            
-
-        }
-
-    
-    if(display.textContent==sum) {
-            
-            display.textContent="";
-            num2=undefined; 
-            sum=undefined; 
-            operator=undefined;
-
-        }
     if(display.textContent==="0" || display.textContent==="") display.textContent="0.";
     if(!display.textContent.includes(".")) display.textContent+=".";
-
 
     
    })
@@ -213,28 +177,13 @@ minus.addEventListener("click", ()=>{
 
         if(sum!=undefined && display.textContent==sum) sum=undefined;
 
-        if(num1!=undefined){
+        if(num1!=undefined) {
 
-
-         if(display.textContent!=sum2) display.textContent="";
-
-         if(num2!=undefined && num2!==""){
-
-                    
-            sum2=operate(num1, num2, operator);
-            display.textContent=sum2;
-            num1=sum2; 
-
-         }
-
-        
-        num2="";
-
-        operator="-";
+            calculate(); 
+            operator="-";        
+         }      
     
     }
-
-}
 
 }) 
 
@@ -249,7 +198,6 @@ clear.addEventListener("click", () => {
         sum=undefined;
         operator=undefined;
         sum2=undefined;
-
 
 })
 
