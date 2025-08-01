@@ -10,7 +10,7 @@ So, I decided to redesign it by rearranging the digits so that it follows the na
 
 For the UI, I kept things minimalist: a soft, light color with basic, clean button designs.
 
-On the logic side, the calculator was built completely from scratch using own custom function to evaluate expressions safely and predictably —without the use of eval() or new Function() due to potential security risks. It was more challenging, but also more rewarding, and gave me a much deeper understanding of how real calculators process input behind the scenes.
+On the logic side, the calculator was built completely from scratch using own custom functions to evaluate expressions safely and predictably —without the use of eval() or new Function() due to potential security risks. It was more challenging, but also more rewarding, and gave me a much deeper understanding of how real calculators process input behind the scenes.
 
 ## Usage
 
