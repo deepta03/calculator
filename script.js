@@ -133,13 +133,13 @@ let handleDel = function() {
     
         if(num1!=undefined && num1==display.textContent && sum==undefined && sum2==undefined && num2==undefined && operator==undefined){
             display.textContent=display.textContent.slice(0,-1);
-            if(display.textContent!=="" && display.textContent!=="-" && display.textContent!=="0.") num1=parseFloat(display.textContent);
+            if(display.textContent!=="" && display.textContent!=="-") num1=parseFloat(display.textContent);
             else num1=undefined;
         }
 
         else if(num2!=undefined && num2==display.textContent && num1!=undefined){
             display.textContent=display.textContent.slice(0,-1);
-            if(display.textContent!=="" && display.textContent!=="0.") num2=parseFloat(display.textContent);
+            if(display.textContent!=="") num2=parseFloat(display.textContent);
             else num2=""; 
         }
     }
